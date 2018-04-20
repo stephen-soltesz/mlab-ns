@@ -38,7 +38,7 @@ class SliverTool(db.Model):
     longitude = db.FloatProperty()
     city = db.StringProperty()
     country = db.StringProperty()
-    roundrobin = db.BooleanProperty(required=False, default=False)
+    roundrobin = db.BooleanProperty(default=False)
 
     # Date representing the last modification time of this entity.
     when = db.DateTimeProperty(auto_now=True)
@@ -77,7 +77,7 @@ class Site(db.Model):
     registration_timestamp = db.IntegerProperty(default=0)
 
     # Whether do round robin for this site. Default value is false.
-    roundrobin = db.BooleanProperty(required=False, default=False)
+    roundrobin = db.BooleanProperty(default=False)
 
     # Date representing the last modification time of this entity.
     when = db.DateTimeProperty(auto_now=True)

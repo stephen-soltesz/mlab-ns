@@ -46,6 +46,12 @@ class LookupHandler(webapp.RequestHandler):
         query = lookup_query.LookupQuery()
         query.initialize_from_http_request(self.request)
 
+        if query.tool_id == 'ndt_ssl' and (random.uniform(0, 1) < 0.001):
+            # TODO: reconstruct query, e.g. self.request.raw_query or something.
+            # TODO: can we discover original HTTP(S) protocol?
+            self.redirect('https://mlab-nstesting.appspot.com', code=302)
+            return
+
         logging.info('Policy is %s', query.policy)
 
         client_signature = query.calculate_client_signature()
